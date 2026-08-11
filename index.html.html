@@ -1,0 +1,259 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AWS Cloud Engineer Interview Mastery | AWS Cloud Engineer Interview Preparation</title>
+<meta name="description" content="Premium AWS Cloud Engineer interview preparation with interview principles, scenario-based questions, troubleshooting, architecture and GenAI on AWS.">
+
+<style>
+:root{
+ --bg:#f5f7fb;--surface:#fff;--ink:#111827;--muted:#64748b;--line:#e2e8f0;
+ --accent:#635bff;--accent-dark:#4f46e5;--dark:#0b1020;--dark2:#151b2e;
+ --good:#087f5b;--warn:#a15c00;--red:#b42318;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65}
+a{text-decoration:none;color:inherit}.container{max-width:1180px;margin:auto;padding:0 24px}
+header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav{height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-weight:850;letter-spacing:-.04em}.brand span{color:var(--accent)}
+.navlinks{display:flex;gap:18px;align-items:center;font-size:14px;color:#475569}
+.navlinks a:hover{color:var(--accent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 16px;border-radius:10px;font-weight:750;font-size:14px;border:1px solid transparent;cursor:pointer}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 20px rgba(99,91,255,.22)}
+.btn-primary:hover{background:var(--accent-dark)}
+.btn-secondary{background:#fff;border-color:#cbd5e1}
+.hero{background:radial-gradient(circle at 80% 10%,rgba(99,91,255,.25),transparent 30%),linear-gradient(135deg,var(--dark),var(--dark2));color:#fff;padding:86px 0 78px}
+.hero-grid{display:grid;grid-template-columns:1.4fr .6fr;gap:54px;align-items:center}
+.eyebrow{display:inline-flex;padding:6px 10px;border:1px solid rgba(255,255,255,.2);border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#ddd9ff}
+h1{font-size:clamp(44px,6vw,76px);line-height:1.0;letter-spacing:-.06em;max-width:900px;margin:20px 0 24px}
+.hero p{max-width:780px;color:#cbd5e1;font-size:19px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.hero .btn-secondary{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);color:#fff}
+.hero-card{background:rgba(255,255,255,.96);color:var(--ink);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:24px;box-shadow:0 30px 70px rgba(0,0,0,.25)}
+.hero-card h3{margin:0 0 15px;font-size:19px}.hero-card ul{margin:0;padding-left:20px;color:#475569;font-size:14px}
+.section{padding:66px 0}.section.alt{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:25px}
+h2{font-size:36px;line-height:1.1;letter-spacing:-.045em;margin:0 0 10px}
+h3{font-size:20px;line-height:1.25;margin:0 0 8px}.lead{color:var(--muted);max-width:830px;margin:0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:-34px;position:relative}
+.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 12px 30px rgba(15,23,42,.06)}
+.stat strong{display:block;font-size:24px;letter-spacing:-.03em}.stat span{font-size:12px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:21px;box-shadow:0 6px 22px rgba(15,23,42,.04)}
+.module{min-height:205px;position:relative}.num{font-size:11px;font-weight:850;color:var(--accent);letter-spacing:.1em}.module p{color:var(--muted);font-size:14px}.badge{display:inline-block;font-size:10px;padding:4px 8px;border-radius:999px;background:#efefff;color:#5146c8;font-weight:800}
+.framework{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.step{background:#fff;border:1px solid var(--line);border-radius:14px;padding:17px}.step strong{display:block;margin-bottom:5px}.step span{font-size:13px;color:var(--muted)}
+.callout{border-left:4px solid var(--accent);background:#f0efff;padding:18px 20px;border-radius:0 12px 12px 0;margin:24px 0}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.filter{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 12px;font-size:12px;font-weight:750;cursor:pointer}.filter.active{background:#111827;color:#fff;border-color:#111827}
+.search{width:100%;padding:14px 15px;border:1px solid var(--line);border-radius:11px;font-size:15px;background:#fff}
+.question{background:#fff;border:1px solid var(--line);border-radius:16px;padding:21px;margin:14px 0}.qtop{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.level{font-size:10px;font-weight:850;padding:4px 8px;border-radius:999px}.foundation{background:#e8f7f1;color:var(--good)}.scenario{background:#fff2dc;color:var(--warn)}.advanced{background:#eeebff;color:#5146c8}.trouble{background:#ffe9e7;color:var(--red)}
+.question h3{font-size:18px;margin:10px 0}.small{font-size:12px;color:var(--muted)}
+details{margin-top:14px;border-top:1px solid var(--line);padding-top:13px}summary{cursor:pointer;font-weight:800;color:var(--accent)}
+.answer{margin-top:13px;color:#334155}.answer strong{color:var(--accent)}
+.plan{min-height:185px}.plan .day{font-size:12px;color:var(--accent);font-weight:850}
+.cta{background:linear-gradient(135deg,#111827,#222a44);color:#fff;border-radius:22px;padding:42px;margin:20px 0}.cta p{color:#cbd5e1;max-width:750px}
+.author{display:grid;grid-template-columns:1fr 1fr;gap:18px}.author .card{background:#fff}
+footer{background:#0b1020;color:#aeb8cb;padding:38px 0}.footer-row{display:flex;justify-content:space-between;gap:20px}.footer-brand{color:#fff;font-weight:850}
+.hidden{display:none!important}
+@media(max-width:900px){.hero-grid,.author{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.framework{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){.navlinks{display:none}.grid{grid-template-columns:1fr}.framework{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}h1{font-size:45px}.section{padding:48px 0}.container{padding:0 18px}}
+</style>
+
+</head>
+
+<body>
+<header>
+  <nav class="nav container">
+    <div class="brand">AWS Cloud Engineer <span>Interview Mastery</span></div>
+    <div class="navlinks">
+      <a href="#principles">Principles</a><a href="#curriculum">Curriculum</a>
+      <a href="#questions">Question Bank</a><a href="#plan">Study Plans</a>
+      <a class="btn btn-primary" href="https://topmate.io/sourav_seal" target="_blank">Get Full Access</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">AWS Cloud Engineer Interview Preparation</span>
+      <h1>Think like a Cloud Engineer. Answer like an engineer.</h1>
+      <p>A structured preparation system for AWS Cloud Engineer, Cloud Infrastructure, DevOps and related technical interviews — built around fundamentals, production scenarios, troubleshooting, architecture thinking and GenAI.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#questions">Explore Question Bank →</a>
+        <a class="btn btn-secondary" href="#curriculum">See What's Inside</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>What you will master</h3>
+      <ul>
+        <li>AWS fundamentals that interviewers actually probe</li>
+        <li>Scenario-based troubleshooting and architecture</li>
+        <li>Security, resilience, observability and cost thinking</li>
+        <li>Terraform, DevOps, containers and Kubernetes</li>
+        <li>GenAI, Bedrock, RAG and production AI patterns</li>
+        <li>How to structure strong technical answers</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<main>
+<section class="container">
+  <div class="stats">
+    <div class="stat"><strong>13</strong><span>Core learning modules</span></div>
+    <div class="stat"><strong>7 / 14 / 30</strong><span>Preparation paths</span></div>
+    <div class="stat"><strong>6</strong><span>Question types</span></div>
+    <div class="stat"><strong>1</strong><span>Interview thinking framework</span></div>
+  </div>
+</section>
+
+<section class="section" id="principles">
+<div class="container">
+  <div class="section-head"><div><h2>01 — Interview Principles</h2><p class="lead">Strong candidates don't just know AWS services. They demonstrate structured reasoning, operational awareness and the ability to make defensible engineering decisions.</p></div></div>
+  <div class="framework">
+    <div class="step"><strong>1. Clarify</strong><span>Requirements, constraints, scale, users and success criteria.</span></div>
+    <div class="step"><strong>2. Decompose</strong><span>Application, network, identity, data, platform and operations.</span></div>
+    <div class="step"><strong>3. Hypothesize</strong><span>Likely causes or viable designs before choosing a service.</span></div>
+    <div class="step"><strong>4. Validate</strong><span>Metrics, logs, configuration and controlled tests.</span></div>
+    <div class="step"><strong>5. Recommend</strong><span>Solution, trade-offs, risks and operational consequences.</span></div>
+  </div>
+  <div class="callout"><strong>Golden rule:</strong> Don't lead with an AWS service. Lead with the problem and decision criteria, then select the service that best satisfies them.</div>
+  <div class="grid">
+    <div class="card"><h3>Think in failure domains</h3><p class="small">Ask what happens when an instance, AZ, dependency, network path, region or external service fails.</p></div>
+    <div class="card"><h3>Make trade-offs explicit</h3><p class="small">Strong answers explain why a design is preferred and what it costs in complexity, latency, availability or money.</p></div>
+    <div class="card"><h3>Separate mitigation from root cause</h3><p class="small">A production workaround may restore service. A good engineer also explains how the underlying failure will be prevented.</p></div>
+  </div>
+</div>
+</section>
+
+<section class="section alt" id="curriculum">
+<div class="container">
+  <div class="section-head"><div><h2>02 — Mastery Curriculum</h2><p class="lead">Thirteen modules take the candidate from cloud fundamentals to production architecture and modern GenAI workloads.</p></div></div>
+  <div class="grid">
+    <div class="card module"><div class="num">MODULE 01</div><h3>Cloud & AWS Foundations</h3><p>Regions, AZs, shared responsibility, elasticity, scalability, managed services and Well-Architected thinking.</p><span class="badge">Foundation → Advanced</span></div>
+    <div class="card module"><div class="num">MODULE 02</div><h3>IAM & Security</h3><p>Policies, roles, trust policies, least privilege, KMS, secrets, permission boundaries and organizational controls.</p><span class="badge">Security</span></div>
+    <div class="card module"><div class="num">MODULE 03</div><h3>Networking</h3><p>VPC, subnets, routing, NAT, endpoints, SGs, NACLs, load balancers, DNS and hybrid connectivity.</p><span class="badge">High Priority</span></div>
+    <div class="card module"><div class="num">MODULE 04</div><h3>Compute</h3><p>EC2, AMIs, launch templates, Auto Scaling, instance families, health checks and workload selection.</p><span class="badge">High Priority</span></div>
+    <div class="card module"><div class="num">MODULE 05</div><h3>Storage</h3><p>S3, EBS, EFS, lifecycle management, durability, performance and encryption.</p><span class="badge">Core AWS</span></div>
+    <div class="card module"><div class="num">MODULE 06</div><h3>Databases</h3><p>RDS, Aurora, DynamoDB, caching, replicas, Multi-AZ, backup/restore and consistency trade-offs.</p><span class="badge">Core AWS</span></div>
+    <div class="card module"><div class="num">MODULE 07</div><h3>Containers & Kubernetes</h3><p>ECS, EKS, container networking, images, scaling, service discovery and Kubernetes operations.</p><span class="badge">Intermediate</span></div>
+    <div class="card module"><div class="num">MODULE 08</div><h3>Serverless</h3><p>Lambda, API Gateway, events, concurrency, retries, idempotency, DLQs and observability.</p><span class="badge">Scenario Heavy</span></div>
+    <div class="card module"><div class="num">MODULE 09</div><h3>DevOps & Infrastructure as Code</h3><p>CI/CD, Terraform, CloudFormation, deployment strategies, state, drift and secure automation.</p><span class="badge">Interview Favorite</span></div>
+    <div class="card module"><div class="num">MODULE 10</div><h3>Observability & Operations</h3><p>Metrics, logs, traces, alarms, dashboards, incident response and operational readiness.</p><span class="badge">Production</span></div>
+    <div class="card module"><div class="num">MODULE 11</div><h3>HA, DR & Resilience</h3><p>Failure domains, RTO/RPO, Multi-AZ, multi-region, backups and recovery testing.</p><span class="badge">Advanced</span></div>
+    <div class="card module"><div class="num">MODULE 12</div><h3>Cost & FinOps</h3><p>Right-sizing, Savings Plans, reservations, storage optimization and architecture economics.</p><span class="badge">Architecture</span></div>
+    <div class="card module"><div class="num">MODULE 13</div><h3>Generative AI on AWS</h3><p>LLMs, foundation models, Bedrock, prompts, embeddings, RAG, vector retrieval, agents, guardrails, security, observability and cost.</p><span class="badge">Critical & Emerging</span></div>
+  </div>
+  <div class="callout"><strong>GenAI is core cloud knowledge:</strong> candidates should be able to reason about production LLM workloads, not just name AI services. This track connects GenAI to networking, identity, data, security, operations and cost.</div>
+</div>
+</section>
+
+<section class="section" id="questions">
+<div class="container">
+  <div class="section-head"><div><h2>03 — Question Bank</h2><p class="lead">The final bank is designed around the way interviewers probe depth: concept → application → scenario → troubleshooting → architecture → follow-up.</p></div></div>
+  <input id="search" class="search" placeholder="Search questions, AWS services or topics…">
+  <div class="filters" id="filters">
+    <button class="filter active" data-filter="all">All</button><button class="filter" data-filter="foundation">Foundation</button>
+    <button class="filter" data-filter="scenario">Scenario</button><button class="filter" data-filter="trouble">Troubleshooting</button>
+    <button class="filter" data-filter="advanced">Advanced</button><button class="filter" data-filter="genai">GenAI</button>
+  </div>
+
+  <div class="question" data-type="foundation" data-search="vpc subnet public private route table networking">
+    <div class="qtop"><span class="level foundation">FOUNDATION</span><span class="small">Networking</span></div>
+    <h3>What is the difference between a public subnet and a private subnet?</h3>
+    <details><summary>Reveal interview-grade approach</summary><div class="answer"><strong>What the interviewer is testing:</strong> routing fundamentals. Explain the route table behavior rather than treating “public” as a label. A subnet is public when its route table has a route to an Internet Gateway; a private subnet does not have that direct route. Then discuss how outbound access can be provided through a NAT pattern when required.<br><br><strong>Follow-up:</strong> Why might you prefer a VPC endpoint instead of NAT for access to an AWS service?</div></details>
+  </div>
+
+  <div class="question" data-type="trouble" data-search="ec2 unreachable troubleshooting ssh application network security group nacl route table">
+    <div class="qtop"><span class="level trouble">TROUBLESHOOTING</span><span class="small">EC2 / Networking</span></div>
+    <h3>An EC2 instance is running, but users cannot reach the application. How do you troubleshoot it?</h3>
+    <details><summary>Reveal interview-grade approach</summary><div class="answer"><strong>How to think:</strong> move from the client toward the workload: DNS → load balancer/listener → target health → security groups → NACLs → route tables → subnet connectivity → OS firewall → application process → application logs. State what evidence you would inspect at each layer before making changes.<br><br><strong>Common mistake:</strong> immediately restarting the instance without establishing where the failure occurs.</div></details>
+  </div>
+
+  <div class="question" data-type="advanced" data-search="iam role policy trust policy access denied permission boundary scp security">
+    <div class="qtop"><span class="level advanced">ADVANCED</span><span class="small">IAM</span></div>
+    <h3>An EC2 instance has an IAM role attached, but an application receives AccessDenied. What would you check?</h3>
+    <details><summary>Reveal interview-grade approach</summary><div class="answer"><strong>Strong answer:</strong> verify the identity actually being used, credentials available to the workload, identity policies, resource policies where applicable, explicit denies, permission boundaries, session policies and organization-level controls such as SCPs. Explain that an attached role does not automatically mean the requested action is effectively allowed.</div></details>
+  </div>
+
+  <div class="question" data-type="scenario" data-search="database rds aurora read replica read traffic performance caching connections">
+    <div class="qtop"><span class="level scenario">SCENARIO</span><span class="small">Databases</span></div>
+    <h3>Your production database has increasing read traffic. What options would you evaluate?</h3>
+    <details><summary>Reveal interview-grade approach</summary><div class="answer"><strong>Strong answer:</strong> first identify whether the bottleneck is reads, writes, connections, storage or compute. Then evaluate query optimization, caching, read scaling/read replicas, connection pooling and application changes. Explain why scaling the database blindly can solve the symptom without solving the workload pattern.</div></details>
+  </div>
+
+  <div class="question" data-type="genai" data-search="generative ai bedrock rag embeddings vector database llm security architecture sensitive data">
+    <div class="qtop"><span class="level scenario">GENAI SCENARIO</span><span class="small">Generative AI on AWS</span></div>
+    <h3>Design a production RAG application on AWS for enterprise documents containing sensitive information. How would you approach it?</h3>
+    <details><summary>Reveal interview-grade approach</summary><div class="answer"><strong>What the interviewer is testing:</strong> whether you can connect GenAI to cloud engineering fundamentals. Clarify users, data sensitivity, latency, scale and quality requirements. Then reason through secure ingestion, document processing, embeddings, vector retrieval, model selection, IAM, encryption, network isolation, context handling, guardrails, observability, evaluation, failure handling and cost. Explain the trade-offs instead of simply listing services.<br><br><strong>Follow-up:</strong> How would you prevent a user from retrieving documents they are not authorized to see?</div></details>
+  </div>
+
+  <div class="question" data-type="scenario" data-search="high availability multi az failure architecture application">
+    <div class="qtop"><span class="level scenario">SCENARIO</span><span class="small">Architecture</span></div>
+    <h3>Design a highly available web application across multiple Availability Zones. What would you consider?</h3>
+    <details><summary>Reveal interview-grade approach</summary><div class="answer"><strong>Strong answer:</strong> define the availability target first, then distribute compute across AZs behind a load balancer, make the application tier stateless where possible, design database failure handling, remove single points of failure, define health checks, observability, deployment strategy and recovery procedures. The strongest answers also discuss what happens when an entire AZ becomes unavailable.</div></details>
+  </div>
+</div>
+</section>
+
+<section class="section alt" id="plan">
+<div class="container">
+  <div class="section-head"><div><h2>04 — Choose Your Preparation Path</h2><p class="lead">Use the path that matches your interview timeline. The goal is active recall and scenario practice, not passive reading.</p></div></div>
+  <div class="grid">
+    <div class="card plan"><div class="day">7-DAY SPRINT</div><h3>Rapid Revision</h3><p class="small">Prioritize IAM, networking, EC2, storage, databases, troubleshooting and high-frequency scenarios. Finish with a timed mock round.</p></div>
+    <div class="card plan"><div class="day">14-DAY ACCELERATOR</div><h3>Concept + Scenarios</h3><p class="small">Combine daily concept revision with scenario drills, troubleshooting, architecture questions and follow-up practice.</p></div>
+    <div class="card plan"><div class="day">30-DAY MASTERY</div><h3>Deep Interview Readiness</h3><p class="small">Build depth across all modules, including Terraform, Kubernetes, resilience, FinOps and GenAI architecture.</p></div>
+  </div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+  <div class="cta">
+    <h2>Don't just know AWS. Know how to answer.</h2>
+    <p>Practice the concepts, scenarios and reasoning patterns that help you handle technical interviews with confidence.</p>
+    <a class="btn btn-primary" href="https://topmate.io/sourav_seal" target="_blank">Get Full Access on Topmate →</a>
+  </div>
+</div>
+</section>
+
+<section class="section alt">
+<div class="container">
+  <div class="author">
+    <div class="card"><h3>Built for real interview conversations</h3><p class="small">The guide is intentionally structured around interviewer intent, engineering trade-offs, troubleshooting evidence and follow-up depth — not memorisation alone.</p></div>
+    <div class="card"><h3>Keep building your cloud career</h3><p class="small">Explore additional interview preparation, cloud architecture and AI learning resources through Sourav's professional ecosystem.</p><a class="btn btn-secondary" href="https://topmate.io/sourav_seal" target="_blank">Explore Resources →</a></div>
+  </div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="container footer-row"><div><div class="footer-brand">AWS Cloud Engineer Interview Mastery</div><div style="font-size:12px">Interview preparation system • Version 3.0</div></div><div style="font-size:12px">Learn → Reason → Troubleshoot → Design → Communicate</div></div>
+</footer>
+
+<script>
+const search=document.getElementById('search');
+const questions=[...document.querySelectorAll('.question')];
+const filters=[...document.querySelectorAll('.filter')];
+let active='all';
+function render(){
+  const term=search.value.toLowerCase().trim();
+  questions.forEach(q=>{
+    const type=q.dataset.type;
+    const matchesFilter=active==='all'||type===active;
+    const matchesText=!term||q.dataset.search.includes(term)||q.innerText.toLowerCase().includes(term);
+    q.classList.toggle('hidden',!(matchesFilter&&matchesText));
+  });
+}
+filters.forEach(btn=>btn.addEventListener('click',()=>{
+  filters.forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+  active=btn.dataset.filter;render();
+}));
+search.addEventListener('input',render);
+</script>
+</body>
+
+</html>
